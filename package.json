@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Victor-Leung-CA/fire-drone-pi/issues"
   },
-  "homepage": "https://github.com/Victor-Leung-CA/fire-drone-pi#readme"
+  "homepage": "https://github.com/Victor-Leung-CA/fire-drone-pi#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
