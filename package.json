@@ -1,0 +1,21 @@
+{
+  "name": "fire-drone-pi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Victor-Leung-CA/fire-drone-pi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Victor-Leung-CA/fire-drone-pi/issues"
+  },
+  "homepage": "https://github.com/Victor-Leung-CA/fire-drone-pi#readme"
+}
