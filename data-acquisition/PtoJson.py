@@ -41,6 +41,12 @@ now = datetime.now()
 #all relevant GPS variables
 
 # figure out units 
+def time_current ():
+    #updating time 
+    current_time = now.strftime("%H:%M:%S")
+    print("Current Time =", current_time)
+    return current_time 
+
 
 GPS_dictionary = {
     "latitude": 112, 
@@ -48,15 +54,11 @@ GPS_dictionary = {
     "longitude" : 22.4,
     "speed":  10,
     "time": 1.1234,
-    "currenttime": ""              
+    "currenttime": time_current()              
    } 
 
-#updating time 
-current_time = now.strftime("%H:%M:%S")
-print("Current Time =", current_time)
 
-GPS_dictionary["currenttime"]= current_time 
-
+#GPS_dictionary["currenttime"] = time_current()
 
 
 #updating the dictionary 
