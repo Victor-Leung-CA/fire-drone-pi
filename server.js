@@ -18,18 +18,22 @@ const sensorProcess = spawn('python', ['./data-acquisition/sensor.py']);
 
 sensorProcess.stdout.on('data', data => {
     
+  if(data == "Mission End"){
+    // Post data to server
+    sensorAPI.postData(coordinates);
+  }
+  else{
     // Coerce Buffer object to Float
     coordinates.push(parseFloat(data));
+  }
 
-    // Log to debug
-    sensorAPI.postData(coordinates[coordinates.length-1]);
 });
 
 
 /*
  * Server
 */
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
 app.get('/', function (req, res) {
   res.send('Welcome to FireDrone Raspberry Pi Server!');
