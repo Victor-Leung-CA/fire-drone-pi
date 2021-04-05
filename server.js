@@ -14,7 +14,7 @@ const { spawn } = require('child_process');
 
 // Store GPS readings
 const coordinates = [];
-const sensorProcess = spawn('python', ['./data-acquisition/sensor.py']);
+const sensorProcess = spawn('python', ['./data-acquisition/sensor.py']); // this might need to be changed to trygps.py; Victor to confirm
 
 sensorProcess.stdout.on('data', data => {
     
