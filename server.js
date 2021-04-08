@@ -1,12 +1,10 @@
-const sensorAPI = require('./API/sensorAPI')
 var express = require('express');
+//For running python script as child process
+const { spawn } = require('child_process');
+const postPhotos = require('./API/postPhotos').postPhotos
 
 var app = express();
 app.use(express.json());
-
-//For running python script as child process
-const { spawn } = require('child_process');
-
 
 /*
  * Launch external scripts
@@ -17,23 +15,26 @@ const coordinates = [];
 const sensorProcess = spawn('python', ['./data-acquisition/sensor.py']); // this might need to be changed to trygps.py; Victor to confirm
 
 sensorProcess.stdout.on('data', data => {
-    
-  if(data == "Mission End"){
+  if(data.toString().includes("test-photo")){
     // Post data to server
-    sensorAPI.postData(coordinates);
+    postPhotos(0, "fire_drone.png")
+    console.log("Sending photo to server")
+
   }
   else{
-    // Coerce Buffer object to Float
-    coordinates.push(parseFloat(data));
+    console.log("something is wrong...")
   }
 
 });
 
+sensorProcess.on('exit', (code) => {
+  console.log(`Child process exited with code ${code}`);
+});
 
 /*
  * Server
 */
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5001;
 
 app.get('/', function (req, res) {
   res.send('Welcome to FireDrone Raspberry Pi Server!');
